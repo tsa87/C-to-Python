@@ -1,0 +1,23 @@
+cout << endl ;$print ( )
+cout << VAR ;$print ( VAR )
+cout << VAR << VAR << endl ;$print ( VAR , VAR )
+cout << VAR << VAR ;$print ( VAR , VAR )
+cout << VAR << VAR << VAR << "\n" ;$print ( VAR , VAR , VAR )
+printf ( VAR ) ;$print ( VAR )
+VAR = VAR * VAR ;$VAR = VAR * VAR
+VAR = VAR - VAR ;$VAR = VAR - VAR
+VAR = VAR / VAR ;$VAR = VAR / VAR
+VAR = VAR + VAR ;$VAR = VAR + VAR
+VAR * VAR$VAR * VAR
+VAR - VAR$VAR - VAR
+VAR / VAR$VAR / VAR
+VAR + VAR$VAR + VAR
+pow ( VAR , VAR )$VAR ** VAR
+for ( int i = 0 ; i < VAR ; i ++ ) {$for i in range ( VAR ):
+for ( int i = VAR ; i < VAR ; i ++ ) {$for i in range ( VAR , VAR ):
+while ( BOOL ) {$while BOOL :
+BOOL && BOOL$BOOL and BOOL :
+BOOL || BOOL$BOOL or BOOL :
+int VAR ;$VAR = 0
+int main ( void ) {$
+return VAR ;$return VAR

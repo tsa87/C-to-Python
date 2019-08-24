@@ -1,0 +1,28 @@
+**print**
+print VAR\cout<<VAR;
+say VAR\cout<<VAR;
+print VAR on the terminal\cout<<VAR;
+print a new line\cout<<endl;
+print newline\cout<<endl;
+print INT newlines\for(int i=0;i<INT;i++){cout<<endl;}
+print VAR INT times\for(int i=0;i<INT;i++){cout<<VAR;}
+say VAR for INT times\for(int i=0;i<INT;i++){cout<<VAR;}
+When it's BOOL, say VAR\while BOOL{cout<<VAR;}
+
+**loop related**
+give me the INT th number of FUNC\for(int i=0;i<INT;i++){FUNC}
+do FUNC for INT times\for(int i=0;i<INT;i++){FUNC}
+if BOOL, say VAR\if BOLL{cout<<VAR;}
+when BOOL, execute FUNC\while BOOL{FUNC}
+
+**logic related
+if BOOL, do FUNC\if bool{FUNC}
+
+**vector related**
+sort VAR in increasing order\sort(VAR.begin(),VAR.end());
+return the INT th item of VAR\VAR.at(INT);
+make a new list of VAR\vector<VAR> new_vector;
+make a vector\vector<int> new_vector;
+add a INT at the end of the VAR\VAR.push_back(int);
+append INT into VAR\VAR.push_back(int);
+see if VAR is empty\VAR.empty()

@@ -1,0 +1,9 @@
+print VAR\cout << VAR;
+say VAR\cout << VAR;
+print VAR on the terminal\cout << VAR ;
+print a new line\cout << endl ;
+print newline\cout << endl ;
+print INT newlines\for ( int i = 0 ; i < INT ; i++ ) { cout << endl ; }
+print VAR INT times\for(int i=0;i<INT;i++){cout<<VAR;}
+say VAR for INT times\for(int i=0;i<INT;i++){cout<<VAR;}
+When it's BOOL, say VAR\while BOOL{cout<<VAR;}
