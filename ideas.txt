@@ -1,0 +1,7 @@
+
+#1. Train a word embedding for C++ and Python
+  # CBOW? Striaght forward.
+  # function embedding
+
+#2. Use the large leetcode dataset.
+  #2a. Need to clean the dataset

@@ -1,11 +1,11 @@
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 from vocab import Vocabulary
 from config import config
 import random
 import torch
 import time
 import math
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import numpy as np
 
 def prepare_data():
@@ -56,3 +56,21 @@ def compute_accuracy(output, target):
                 correct_counter += 1
 
     return correct_counter/len(target)
+
+def show_and_save_plot(train_loss_history, train_acc_history, eval_loss_history, eval_acc_history, file_name):
+    plt.subplot(2,1,1)
+    plt.title('Loss')
+    t = range(len(train_loss_history))
+    plt.plot(t, train_loss_history,'r')
+    plt.plot(t, eval_loss_history,'b')
+
+    plt.subplot(2,1,2)
+    plt.title('Accuracy')
+    plt.ylim(0, 1)
+    t = range(len(train_acc_history))
+    plt.plot(t, train_acc_history,'r')
+    plt.plot(t, eval_acc_history,'b')
+
+    plt.savefig(file_name)
+    print("Plot saved.")
+    plt.show()

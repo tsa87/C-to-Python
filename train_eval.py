@@ -99,7 +99,7 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
     if random.random() < config.TEACHER_FORCE_RATIO:
         # Teacher forcing: Feed the target as the next input
         for i in range(target_length):
-            decoder_output, decoder_hidden = decoder(decoder_input, decoder_hidden)
+            decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
 
             output.append(decoder_output.topk(1)[1].item())
 
@@ -109,7 +109,7 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
     else:
         # Without teacher forcing: use its own predictions as the next input
         for i in range(target_length):
-            decoder_output, decoder_hidden = decoder(decoder_input, decoder_hidden)
+            decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
 
             topv, topi = decoder_output.topk(1)
             output.append(topi.item())
@@ -153,7 +153,7 @@ def eval(input_tensor, target_tensor, encoder, decoder, criterion):
     output = []
 
     for i in range(target_length):
-        decoder_output, decoder_hidden = decoder(decoder_input, decoder_hidden)
+        decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden,encoder_outputs)
 
         topv, topi = decoder_output.topk(1)
         output.append(topi.item())
@@ -185,9 +185,11 @@ def evaluate(encoder, decoder, source_vocab, target_vocab, sentence, max_length=
         decoder_hidden = encoder_hidden
 
         decoded_words = []
+        decoder_attentions = torch.zeros(max_length, max_length)
 
         for i in range(max_length):
-            decoder_output, decoder_hidden= decoder(decoder_input, decoder_hidden)
+            decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
+            decoder_attentions[i] = decoder_attention.data
             topv, topi = decoder_output.data.topk(1)
             if topi.item() == config.EOS_TOKEN:
                 decoded_words.append('<EOS>')
@@ -197,4 +199,4 @@ def evaluate(encoder, decoder, source_vocab, target_vocab, sentence, max_length=
 
             decoder_input = topi.squeeze().detach()
 
-        return decoded_words
+        return decoded_words, decoder_attention[:i+1]
